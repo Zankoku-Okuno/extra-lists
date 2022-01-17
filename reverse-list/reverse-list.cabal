@@ -1,6 +1,6 @@
 cabal-version: 3.0
 name: reverse-list
-version: 0.0.1.0
+version: 0.1.0
 -- synopsis: 
 -- description:
 category: Data
@@ -20,6 +20,7 @@ library
   -- other-modules:
   build-depends:
     , base >=4.11.1
+    , containers >=0.6
     , contiguous >= 0.6
     , deepseq >=1.4
   default-language: Haskell2010

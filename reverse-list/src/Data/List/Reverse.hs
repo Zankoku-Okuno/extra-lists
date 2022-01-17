@@ -34,17 +34,20 @@ module Data.List.Reverse
   , reverseIn
   , reverseOut
   , toArrayN
+  , toSet
   ) where
 
 import Prelude hiding (null,reverse)
 
 import Control.DeepSeq (NFData)
 import Data.Primitive.Contiguous (Contiguous, Element, SmallArray)
+import Data.Set (Set)
 import GHC.Generics (Generic)
 
 import qualified Data.List as List
 import qualified Data.Maybe as Maybe
 import qualified Data.Primitive.Contiguous as Arr
+import qualified Data.Set as Set
 import qualified Prelude
 
 
@@ -132,7 +135,7 @@ reverseIn = RList
 --
 -- If you are unaware of the size of the list, `Arr.fromList . fromList` will do the trick, but will obviously be slower.
 toArrayN :: (Contiguous arr, Element arr a) => Int -> RList a -> arr a
-{-# INLINABLE toArrayN #-}
+{-# INLINE toArrayN #-} -- use inline instead of inlinable, because inlinable with Contiguous is busted
 {-# SPECIALIZE toArrayN :: Int -> RList a -> SmallArray a #-}
 toArrayN n (RList xs0) = Arr.create $ do
   mut <- Arr.new n
@@ -144,3 +147,7 @@ toArrayN n (RList xs0) = Arr.create $ do
   loop arr i (x:xs) = do
     Arr.write arr i x
     loop arr (i - 1) xs
+
+toSet :: (Ord a) => RList a -> Set a
+{-# INLINABLE toSet #-}
+toSet (RList xs) = Set.fromList xs
