@@ -17,7 +17,7 @@ Include the following in your `cabal.project` file:
 ```
 source-repository-package
   type: git
-  location: https://github.com/Zankoku-Okuno/extra-lists
+  location: https://github.com/edemko/extra-lists
   tag: <your choice of commit hash>
   subdir: <name of package>
 ```
@@ -30,3 +30,7 @@ How many times have you written a recursive function that accumulates a list bac
 Now, accumulate an `RList`, and the type system will ensure you convert it (probably by revering) before returning the the list-expecting caller.
 
 Until levity-polymorphic data types make their way into GHC, these have the same laziness choices as vanilla lists.
+
+This package also has a (stub) module for cons lists.
+This exports only functions that are the "intended use" of linked lists, and does not export partial functions.
+It is intended to be a drop-in replacement for the outdated design decisions `Data.List`, and perhaps will get there eventually.
