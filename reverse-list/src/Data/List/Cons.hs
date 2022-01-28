@@ -5,7 +5,7 @@
 -- However, it can also be used in place of the "Prelude" list type:
 --
 -- This module only exports functions that are efficient on linked lists. Many
--- functions on that type ('Prelude.last' 'Data.List.isSuffixOf') though
+-- functions on that type ('Prelude.last', 'Data.List.isSuffixOf') though
 -- technically implementable, do not represent the intended use of a linked list
 -- in terms of performance.
 --
@@ -46,7 +46,7 @@ nil = []
 
 -- | @O(1)@ Append an element.
 --
--- If you are looking for @snoc@, you should use an 'RList', or a finite sequence/queue type.
+-- If you are looking for @snoc@, you should use an 'Data.List.Snoc.RList', or a finite sequence/queue type.
 cons :: a -> List a -> List a
 {-# INLINABLE cons #-}
 cons = (:)
@@ -54,7 +54,7 @@ cons = (:)
 -- | @O(1)@ Access the first element and trailing portion of the list.
 -- See also 'head' and 'tail' if you only need one component.
 --
--- If you are looking for @unsnoc@, you should use an 'RList', or a finite sequence/queue type.
+-- If you are looking for @unsnoc@, you should use an 'Data.List.Snoc.RList', or a finite sequence/queue type.
 uncons :: List a -> Maybe (a, List a)
 {-# INLINABLE uncons #-}
 uncons [] = Nothing
