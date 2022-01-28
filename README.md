@@ -11,9 +11,8 @@ I want to stop writing the something else over-and-over.
 ## Usage
 
 This is a monorepo containing cabal packages.
-I've not (yet?) hosted the packages on Hackage.
-Include the following in your `cabal.project` file:
-
+`reverse-list` is hosted on [Hackage](https://hackage.haskell.org/package/reverse-list-0.2.0)
+For packages (or versions) I've not yet hosted on Hackage, include the following in your `cabal.project` file:
 ```
 source-repository-package
   type: git
